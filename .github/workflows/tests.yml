@@ -1,6 +1,15 @@
 name: React CI - Testes Unitários
 
 on:
+  push:             # Adicione isso para testar agora!
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+    
+    
+name: React CI - Testes Unitários
+
+on:
   pull_request:
     branches: [ main ]
 
