@@ -1,15 +1,8 @@
 name: React CI - Testes Unitários
 
 on:
-  push:             # Adicione isso para testar agora!
+  push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    
-    
-name: React CI - Testes Unitários
-
-on:
   pull_request:
     branches: [ main ]
 
@@ -25,4 +18,3 @@ jobs:
         node-version: '18'
     - run: npm install
     - run: npm test -- --watchAll=false
-  
