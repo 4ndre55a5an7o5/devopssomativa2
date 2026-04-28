@@ -1,14 +1,25 @@
-name: React CI
+name: Unit Tests CI
+
 on:
-  push:
-    branches: [ main ]
+  pull_request:
+    branches: [ main, master ] # Executa quando uma PR é aberta para estas branches
+
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: '20'
-      - run: npm install
-      - run: npm test -- --watchAll=false
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run Unit Tests
+        run: npm test -- --watchAll=false # Roda os testes e encerra o processo
